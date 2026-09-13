@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>AASRA Hazard Intelligence</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2f5;
+    color: #17202a;
+}
+
+.header {
+    background: #111827;
+    color: white;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.status {
+    background: #16a34a;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.location {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.date {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+.score {
+    text-align: center;
+    padding: 20px;
+}
+
+.score-number {
+    font-size: 76px;
+    font-weight: bold;
+}
+
+.score-label {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.hazard {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.progress {
+    height: 16px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 99.18%;
+    background: #dc2626;
+}
+
+.section-title {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 25px 0 15px;
+}
+
+.condition {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    margin: 8px 0;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+.factor {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.action {
+    background: #fff7ed;
+    border-left: 5px solid #f97316;
+    padding: 18px;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+.map {
+    height: 360px;
+    background: #dbeafe;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #1e3a8a;
+}
+
+.footer {
+    text-align: center;
+    color: #6b7280;
+    padding: 30px;
+}
+
+@media(max-width: 800px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+🚨 AASRA — Disaster Preparedness
+</div>
+
+<div class="status">
+● ML ENGINE ACTIVE
+</div>
+
+</div>
+
+
+<div class="container">
+
+<div class="grid">
+
+<!-- SCORE CARD -->
+
+<div class="card">
+
+<div class="location">
+📍 Rudraprayag
+</div>
+
+<div class="date">
+Assessment date: 2025-01-18
+</div>
+
+<div class="score">
+
+<div class="score-number">
+99.18
+</div>
+
+<div class="score-label">
+🔴 EXTREME
+</div>
+
+</div>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+<div class="hazard">
+LANDSLIDE
+</div>
+
+<div class="section-title">
+Hazard Assessment
+</div>
+
+<div class="condition">
+<span>ML Hazard Probability</span>
+<b>99.18%</b>
+</div>
+
+<div class="condition">
+<span>Risk Category</span>
+<b>EXTREME</b>
+</div>
+
+<div class="condition">
+<span>Prediction Source</span>
+<b>Random Forest</b>
+</div>
+
+</div>
+
+
+<!-- CONDITIONS -->
+
+<div class="card">
+
+<div class="section-title">
+🌧 Current / Historical Indicators
+</div>
+
+<div class="condition">
+<span>Rainfall indicators</span>
+<b>ANALYZED</b>
+</div>
+
+<div class="condition">
+<span>River discharge</span>
+<b>ANALYZED</b>
+</div>
+
+<div class="condition">
+<span>Flood history</span>
+<b>ANALYZED</b>
+</div>
+
+<div class="condition">
+<span>Landslide history</span>
+<b>ANALYZED</b>
+</div>
+
+<div class="condition">
+<span>Historical disasters</span>
+<b>ANALYZED</b>
+</div>
+
+<div class="section-title">
+🔎 Important Factors
+</div>
+
+
+        <div class="factor">
+            <span>Previous Landslide Count</span>
+            <b>0.183</b>
+        </div>
+        
+        <div class="factor">
+            <span>Rainy Days 30Day</span>
+            <b>0.087</b>
+        </div>
+        
+        <div class="factor">
+            <span>Rainfall Mean 14Day</span>
+            <b>0.057</b>
+        </div>
+        
+        <div class="factor">
+            <span>Rainfall Mean 30Day</span>
+            <b>0.051</b>
+        </div>
+        
+        <div class="factor">
+            <span>Rainfall Accumulation 14Day</span>
+            <b>0.050</b>
+        </div>
+        
+
+</div>
+
+
+<!-- ACTION -->
+
+<div class="card">
+
+<div class="section-title">
+⚠️ Recommended Action
+</div>
+
+<div class="action">
+Prepare evacuation for vulnerable locations, avoid unstable slopes and restrict movement through landslide-prone areas.
+</div>
+
+<div class="section-title">
+🚑 Decision Support
+</div>
+
+<div class="condition">
+<span>Hazard status</span>
+<b>LANDSLIDE</b>
+</div>
+
+<div class="condition">
+<span>Priority</span>
+<b>EXTREME</b>
+</div>
+
+</div>
+
+
+<!-- MAP PLACEHOLDER -->
+
+<div class="card">
+
+<div class="section-title">
+🗺 Uttarakhand Hazard Map
+</div>
+
+<div class="map">
+Uttarakhand Hazard Map
+<br>
+<br>
+📍 Rudraprayag
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+AASRA • ML-assisted disaster risk intelligence • Uttarakhand
+</div>
+
+</body>
+
+</html>

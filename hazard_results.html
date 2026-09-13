@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>AASRA Hazard Intelligence</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 40px;
+    background: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+}
+
+.results {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.results th {
+    background: #222;
+    color: white;
+    padding: 12px;
+}
+
+.results td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.results tr:hover {
+    background: #eee;
+}
+
+.score {
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚨 AASRA — Uttarakhand Hazard Intelligence</h1>
+
+<p>
+Showing ML-generated hazard predictions from rainfall,
+river and historical disaster data.
+</p>
+
+<table border="1" class="dataframe results">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date</th>
+      <th>district_model</th>
+      <th>hazard_type</th>
+      <th>predicted_hazard</th>
+      <th>hazard_score</th>
+      <th>severity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2024-12-24</td>
+      <td>rudraprayag</td>
+      <td>LANDSLIDE</td>
+      <td>LANDSLIDE</td>
+      <td>72.41</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-24</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>58.89</td>
+      <td>HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-24</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>73.70</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-25</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>72.42</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-25</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>70.49</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-25</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>71.53</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-26</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>83.06</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-26</td>
+      <td>tehri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>67.14</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-26</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>75.40</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>77.33</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>84.60</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>71.70</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>pithoragarh</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>64.52</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>84.91</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>rudraprayag</td>
+      <td>LANDSLIDE</td>
+      <td>LANDSLIDE</td>
+      <td>92.39</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>almora</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>89.70</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>89.37</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>tehri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>85.19</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>88.02</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>rudraprayag</td>
+      <td>LANDSLIDE</td>
+      <td>LANDSLIDE</td>
+      <td>82.95</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>83.18</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>75.57</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>74.05</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>63.27</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>60.76</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>73.37</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-27</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>73.32</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>77.98</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>69.34</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>65.77</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>pithoragarh</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>57.10</td>
+      <td>HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>62.67</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>62.93</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>55.36</td>
+      <td>HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>rudraprayag</td>
+      <td>LANDSLIDE</td>
+      <td>LANDSLIDE</td>
+      <td>63.81</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>61.97</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>68.63</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>chamoli</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>69.51</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>77.27</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>nainital</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>79.63</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>nainital</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>78.26</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>rudraprayag</td>
+      <td>LANDSLIDE</td>
+      <td>LANDSLIDE</td>
+      <td>77.38</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>77.62</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>76.58</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>75.27</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>almora</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>74.94</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>74.94</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>65.85</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>67.94</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-28</td>
+      <td>tehri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>78.82</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-29</td>
+      <td>pithoragarh</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>82.78</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2024-12-29</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>78.78</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-29</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>76.80</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-29</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>75.13</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-29</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>67.33</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-29</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>62.36</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-31</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>74.46</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-31</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>70.00</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2024-12-31</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>82.16</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-01</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>88.50</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-02</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>82.73</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-02</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>LANDSLIDE</td>
+      <td>78.67</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-02</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>85.05</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-03</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>88.61</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-03</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>97.46</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-03</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>95.92</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-04</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>97.16</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-05</td>
+      <td>pithoragarh</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>91.41</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-05</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>88.58</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-05</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>74.85</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-06</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>94.53</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-06</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>96.68</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-07</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>93.43</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-07</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>74.60</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-08</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>77.57</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-09</td>
+      <td>tehri garhwal</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>89.08</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-09</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>89.63</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-09</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>90.40</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-10</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>87.66</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-10</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>86.35</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>nainital</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>82.21</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>78.33</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>85.53</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>74.47</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>nainital</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>71.51</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>68.34</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>71.29</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>champawat</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>71.78</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>78.18</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>bageshwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>72.61</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>68.67</td>
+      <td>VERY HIGH</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>rudraprayag</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>90.43</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>almora</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>84.27</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>pauri garhwal</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>85.73</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>udham singh nagar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>86.12</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-12</td>
+      <td>pithoragarh</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>94.48</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-13</td>
+      <td>haridwar</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>92.12</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-13</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>97.21</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-14</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>90.84</td>
+      <td>EXTREME</td>
+    </tr>
+    <tr>
+      <td>2025-01-15</td>
+      <td>dehradun</td>
+      <td>NORMAL</td>
+      <td>NORMAL</td>
+      <td>88.91</td>
+      <td>EXTREME</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
